@@ -5,7 +5,6 @@ from textblob import TextBlob
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler,MessageHandler,Filters
 import requests
 import re
-import storeusersto_db as st
 # import pycountry
 
 def translate(last_message):
@@ -40,7 +39,6 @@ def sender(bot, update):
         chat_id = update.message.chat_id
         username=update.message.from_user.username
         date=update.message.date
-        st.store(chat_id,username,last_message,date)
         bot.send_message(chat_id=chat_id, text=response)
         print(response)
     except Exception as e:
